@@ -7,12 +7,13 @@ public class Main {
 
     public static <ordersList> void main(String[] args) {
 
+
         CookBook cookBook = new CookBook();
 
-        //1. úkol:
-        new CookBook.GetFood();
 
-        //2.1 úkol:
+        new CookBook.saveFileCookBook();
+
+
         Dish kure = null;
         Dish hran = null;
         Dish pstruh = null;
@@ -20,7 +21,6 @@ public class Main {
         List<Dish> dishList = null;
         try {
             RestaurantManager restaurantManager = new RestaurantManager();
-
             kure = new Dish(1, "Kuřecí řízek obalovaný 150 g", BigDecimal.valueOf(150), 20, "rizek");
             hran = new Dish(2, "Hranolky 150 g", BigDecimal.valueOf(50), 10, "hranolky");
             pstruh = new Dish(3, "Pstruh na víně 200 g", BigDecimal.valueOf(200), 20, "pstruh");
@@ -34,7 +34,7 @@ public class Main {
             System.out.println("An error occurred while adding new dish.");
         }
 
-        //2.2 úkol:
+
         List<Order> ordersList = new ArrayList<>();
         Order order1 = new Order(1, 1, "Kuřecí řízek obalovaný 150 g", 2, 300, 15, LocalDateTime.of(2024, 6, 11, 12, 45, 24, 532), null, false);
         Order order2 = new Order(1, 2, "Hranolky 150 g", 2, 100, 15, LocalDateTime.of(2024, 6, 11, 12, 45, 24, 532), null, false);
@@ -42,22 +42,21 @@ public class Main {
         Order order4 = new Order(2, 3, "Pstruh na víně 200 g", 1, 200, 11, LocalDateTime.of(2024, 6, 11, 11, 26, 55, 351), LocalDateTime.of(2024, 6, 11, 11, 56, 44, 514), true);
         Order order5 = new Order(3, 2, "Hranolky 150 g", 1, 50, 13, LocalDateTime.of(2024, 6, 11, 12, 38, 11, 132), null, false);
 
-        //3. úkol:
+
         RestaurantManager restaurantManager = new RestaurantManager();
         restaurantManager.ordersExport(ordersList,15);
 
-        //4. úkol:
+
         restaurantManager.ordersInProgress();
         restaurantManager.averageFulfilmentTime();
         restaurantManager.dishesOrderedToday();
         restaurantManager.ordersInProgress();
+        restaurantManager.ordersExport();
 
-        //5. úkol:
 
-
-        //6. úkol:
+        public static void saveFiles() throw Exception {
+            new CookBook.saveFileCookBook();
+            new Order.saveFileOrders();
+        }
     }
-
-
-
 }

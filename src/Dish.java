@@ -66,9 +66,9 @@ public class Dish {
         return image;
     }
 
-    public void setImage(String image) throws GetFoodException {
+    public void setImage(String image) throws ResException {
         if (image.isBlank()) {
-            throw new GetFoodException("Item must have an image assigned.");
+            throw new ResException("Item must have an image assigned.");
             }
         this.image = image;
     }

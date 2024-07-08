@@ -1,4 +1,9 @@
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Scanner;
 
 public class Order {
     private int orderId;
@@ -20,6 +25,10 @@ public class Order {
         this.orderedTime = orderedTime;
         this.fulfilmentTime = fulfilmentTime;
         this.paid = paid;
+    }
+
+    public Order() {
+
     }
 
     public void addDish(int orderId, int dishId, String dishTitle, int dishQuantity, int amount, int tableId, LocalDateTime orderedTime, LocalDateTime fulfilmentTime, boolean paid){
@@ -102,5 +111,36 @@ public class Order {
         this.amount = amount;
     }
 
+    public void loadContentFromFile(String FoodList) {
+    }
 
+    public static class saveFileOrders {
+        public saveFileOrders loadDish(String OrderList) throws ResException {
+            int lineCounter = 0;
+            try (Scanner scanner = new Scanner(new BufferedReader(new FileReader(OrderList)))) {
+                while (scanner.hasNextLine()) {
+                    lineCounter++;
+                    String line = scanner.nextLine();
+                    String[] parts = line.split(Settings.getDelimiter());
+                    int orderId = Integer.parseInt(parts[0]);
+                    int dishId = Integer.parseInt(parts[1]);
+                    String dishTitle = parts[2];
+                    int dishQuantity = Integer.parseInt(parts[3]);
+                    int amount = Integer.parseInt(parts[4]);
+                    int tableId = Integer.parseInt(parts[5]);
+                    LocalDateTime orderedTime = LocalDateTime.parse(parts[6]);
+                    LocalDateTime fulfilmentTime = LocalDateTime.parse(parts[7]);
+                    boolean paid = Boolean.parseBoolean(parts[4]);
+
+                }
+            } catch (FileNotFoundException e) {
+                throw new ResException("File " +OrderList+ " was not found\n"+ e.getLocalizedMessage());
+            }
+
+            String filename = Settings.getFoodList();
+            Dish list = new Dish();
+            list.loadContentFromFile(filename);
+            return null;
+        }
+    }
 }
