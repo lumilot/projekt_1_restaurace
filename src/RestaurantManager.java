@@ -5,7 +5,7 @@ import java.util.List;
 
 public class RestaurantManager {
 
-    public void ordersInProgress(List<Order> ordersList) {
+    public static void ordersInProgress(List<Order> ordersList) {
         for (Order order : ordersList) {
             if (!order.orderFinished()) {
                 System.out.println("The order " + order.getOrderId() + "has not been finished yet");
@@ -13,7 +13,7 @@ public class RestaurantManager {
         }
     }
 
-    public void sortOrdersByTime(List<Order> ordersList) {
+    public static void sortOrdersByTime(List<Order> ordersList) {
         ordersList.sort(Comparator.comparing(Order::getOrderedTime));
         System.out.println("Find list of orders sorted by ordered time below: \n");
         for (Order orders : ordersList) {
@@ -21,7 +21,7 @@ public class RestaurantManager {
         }
     }
 
-    public void averageFulfilmentTime(List<Order> ordersList) {
+    public static void averageFulfilmentTime(List<Order> ordersList) {
         long fulfilmentTime = 0;
         int averageFulfilmentTime = 0;
         long timeBetween = 0;
@@ -33,16 +33,17 @@ public class RestaurantManager {
                 fulfiledList.add(orders);
             }
         }
+        System.out.println("The average fulfilment time of the order is " + averageFulfilmentTime + " minutes\n");
     }
 
-    public void dishesOrderedToday(List<Order> ordersList) {
+    public static void dishesOrderedToday(List<Order> ordersList) {
         System.out.println("Today's orders:");
         for (Order orders : ordersList) {
             System.out.println("Dish ID:" + orders.getDishId());
         }
 
     }
-    public String paid(Order orders){
+    public static String paid(Order orders){
         if (orders.isPaid() == true){
             return "Paid";
         }
@@ -51,7 +52,7 @@ public class RestaurantManager {
         }
     }
 
-    public void ordersExport(List<Order> ordersList, int tableId) {
+    public static void ordersExport(List<Order> ordersList, int tableId) {
         System.out.println("List of orders for specific table:");
         for (Order orders : ordersList) {
             System.out.println(orders.getDishId() + ". " + " "
