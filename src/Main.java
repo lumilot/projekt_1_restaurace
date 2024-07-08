@@ -46,11 +46,11 @@ public class Main {
 
     //4. úkol:
     RestaurantManager restaurantManager = new RestaurantManager();
-    restaurantManager.ordersInProgress(ordersList);
-    restaurantManager.sortOrdersByTime(ordersList);
-    restaurantManager.averageFulfilmentTime(ordersList);
-    restaurantManager.dishesOrderedToday(ordersList);
-    restaurantManager.ordersExport(ordersList);
+    restaurantManager.ordersInProgress();
+    restaurantManager.sortOrdersByTime();
+    restaurantManager.averageFulfilmentTime();
+    restaurantManager.dishesOrderedToday();
+    restaurantManager.ordersExport();
 
     //5. úkol:
 
