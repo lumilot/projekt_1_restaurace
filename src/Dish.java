@@ -1,4 +1,5 @@
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 public class Dish {
 
@@ -8,6 +9,20 @@ public class Dish {
     private int preparationTime;
     private String image;
 
+    public Dish(int id, String title, BigDecimal price, int preparationTime, String image) {
+        this.id = id;
+        this.title = title;
+        this.price = price;
+        this.preparationTime = preparationTime;
+        this.image = image;
+    }
+
+    public Dish(int orderId, int dishId, String dishTitle, int dishQuantity, int amount, int tableId, LocalDateTime orderedTime, LocalDateTime fulfilmentTime, boolean paid) {
+    }
+
+    public Dish() {
+
+    }
 
     public int getId() {
         return id;
@@ -51,10 +66,29 @@ public class Dish {
         return image;
     }
 
-    public void setImage(String image) {
+    public void setImage(String image) throws GetFoodException {
+        if (image.isBlank()) {
+            throw new GetFoodException("Item must have an image assigned.");
+            }
         this.image = image;
     }
 
+    // Method to add default photo is there is none
+    public String getDefaultImage(){
+        return "blank";
+    }
+
     public void loadContentFromFile(String FoodList) {
+    }
+
+    @Override
+    public String toString() {
+        return "Dish{" +
+                "id =" + id +
+                ", title=" + title + '\'' +
+                '}';
+    }
+
+    public void remove(Dish dish) {
     }
 }
